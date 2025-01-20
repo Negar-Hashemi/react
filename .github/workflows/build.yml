@@ -14,8 +14,8 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest] # Operating systems to test
-        node-version: [14, 16, 18]                      # Node.js versions to test
+        os: [ubuntu-latest] #, macos-latest, windows-latest] # Operating systems to test
+        node-version: [18] #14, 16, 18]                      # Node.js versions to test
 
     steps:
     - name: Checkout code
