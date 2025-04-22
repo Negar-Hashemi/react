@@ -3,10 +3,10 @@ name: Test on Multiple OS
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   build:
@@ -16,7 +16,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest] # Operating systems to test
-        node-version: [14, 16, 18]                      # Node.js versions to test
+        node-version: [18, 20, 22]                      # Node.js versions to test
         attempt: [1, 2, 3, 4, 5]                        # Repeat tests 5 times
 
     steps:
@@ -31,7 +31,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+
       - name: Testing on OS (${{ matrix.os }}) with Node.js (version ${{ matrix.node-version }}) attempt ${{ matrix.attempt }}
         run: |
           echo "Run attempt: ${{ matrix.attempt }}"
-          npm test
+          npm run test
+    
+    continue-on-error: false
